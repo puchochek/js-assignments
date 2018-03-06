@@ -20,8 +20,7 @@
  *   '',  'bb'  => 'bb'
  */
 export function concatenateStrings(value1, value2) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return value1+value2;
 }
 
 /**
@@ -36,8 +35,7 @@ export function concatenateStrings(value1, value2) {
  *   ''      => 0
  */
 export function getStringLength(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return value.length;
 }
 
 /**
@@ -54,8 +52,7 @@ export function getStringLength(value) {
  *   'Chuck','Norris'  => 'Hello, Chuck Norris!'
  */
 export function getStringFromTemplate(firstName, lastName) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -69,8 +66,8 @@ export function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 export function  extractNameFromTemplate(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var a = value.slice(7,-1);   
+  return a;  
 }
 
 
@@ -85,8 +82,8 @@ export function  extractNameFromTemplate(value) {
  *   'cat'       => 'c'
  */
 export function getFirstChar(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var a = value.slice(0,1);
+    return a;
 }
 
 /**
