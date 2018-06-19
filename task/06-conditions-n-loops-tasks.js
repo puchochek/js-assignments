@@ -29,8 +29,14 @@
  *
  */
 export function getFizzBuzz(num) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  if ((num % 3 === 0) && (num % 5 === 0)) {
+    return 'FizzBuzz';
+  } else if (num % 5 === 0) {
+    return 'Buzz';
+  } else if (num % 3 === 0) {
+    return 'Fizz';
+  }
+  return num;
 }
 
 
@@ -46,8 +52,12 @@ export function getFizzBuzz(num) {
  *   10 => 3628800
  */
 export function getFactorial(n) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var res = 1;
+
+  for (var i = 1; i <= n; i++) {
+    res = i * res;
+  }
+  return res;
 }
 
 
@@ -64,8 +74,11 @@ export function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 export function getSumBetweenNumbers(n1, n2) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var sum = 0;
+  for (var i = n1; i <= n2; i++) {
+    sum = sum + i;
+  }
+  return sum;
 }
 
 
@@ -85,8 +98,10 @@ export function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 export function isTriangle(a, b, c) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  if ((a + b <= c) || (a + c <= b) || (b + c <= a)) {
+    return false;
+  }
+  return true;
 }
 
 
@@ -155,8 +170,15 @@ export function doRectanglesOverlap(rect1, rect2) {
  *
  */
 export function isInsideCircle(circle, point) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var a = point.x - circle.center.x;
+  var b = point.y - circle.center.y;
+  var a2 = Math.pow(a, 2);
+  var b2 = Math.pow(b, 2);
+  var line = Math.sqrt(a2 + b2);
+  if (line < circle.radius) {
+    return true;
+  }
+  return false;
 }
 
 
@@ -172,9 +194,20 @@ export function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 export function findFirstSingleChar(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  for (var i = 0; i < str.length; i++) {
+    var c = str.charAt(i);
+    if (str.indexOf(c) === i && str.indexOf(c, i + 1) === -1) {
+      return c;
+    }
+  }
+  return null;
 }
+
+
+
+
+
+
 
 
 /**
@@ -200,8 +233,29 @@ export function findFirstSingleChar(str) {
  *
  */
 export function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  if ((isStartIncluded) && (isEndIncluded)) {
+    if (a < b) {
+      return '[' + a + ', ' + b + ']';
+    } else return '[' + b + ', ' + a + ']';
+  } else {
+    if ((isStartIncluded) && (!isEndIncluded)) {
+      if (a < b) {
+        return '[' + a + ', ' + b + ')';
+      } else return '[' + b + ', ' + a + ')';
+    } else {
+      if ((!isStartIncluded) && (isEndIncluded)) {
+        if (a < b) {
+          return '(' + a + ', ' + b + ']';
+        } else return '(' + b + ', ' + a + ']';
+      } else {
+        if ((!isStartIncluded) && (!isEndIncluded)) {
+          if (a < b) {
+            return '(' + a + ', ' + b + ')';
+          } else return '(' + b + ', ' + a + ')';
+        }
+      }
+    }
+  }
 }
 
 
@@ -218,8 +272,8 @@ export function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 export function reverseString(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return str.split('').reverse().join('');
+
 }
 
 
@@ -236,8 +290,8 @@ export function reverseString(str) {
  *   34143 => 34143
  */
 export function reverseInteger(num) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var newNum = num.toString();
+  return newNum.split('').reverse().join('');
 }
 
 
@@ -282,9 +336,35 @@ export function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 export function getDigitalRoot(num) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var str = String(num);
+  var firstSum = 0;
+  for (var i = 0; i < str.length; i++) {
+    firstSum = firstSum + +str[i];
+  }
+  if (firstSum < 10) {
+    return firstSum;
+  } else {
+    var secondSum = String(firstSum);
+    var thirdSum = 0;
+    for (var j = 0; j < secondSum.length; j++) {
+      thirdSum = thirdSum + +secondSum[j];
+    }
+    if (thirdSum < 10) {
+      return thirdSum;
+    } else {
+      var anotherSum = String(thirdSum);
+      var lastSum = 0;
+      for (var k = 0; k < anotherSum.length; k++) {
+        lastSum = lastSum + +anotherSum[k];
+        return lastSum;
+
+      }
+
+    }
+  }
 }
+
+
 
 
 /**
@@ -346,6 +426,51 @@ export function isBracketsBalanced(str) {
  *
  */
 export function timespanToHumanString(startDate, endDate) {
+ /* if (endDate - startDate >= 0 && endDate - startDate <= 45 * 1000) {
+    var a = 'a few seconds ago';
+    console.log ('1:', a);
+    return 'a few seconds ago';
+  } else if (endDate - startDate > 45 * 1000 && endDate - startDate < 90 * 1000) {
+    var b = 'a minute ago';
+    console.log ('2:', b);
+    return 'a minute ago';
+  } else if (endDate - startDate >= 90 * 1000 && endDate - startDate <= 45 * 60 *1000) {
+    var minutes = Math.floor((endDate - startDate)/1000/60);
+    console.log('3:', minutes);
+    return minutes + ' minutes ago';
+  } else if (endDate - startDate >= 45*60*1000 && endDate - startDate <= 90*60*1000) {
+    var c = 'an hour ago';
+    console.log('3:', c);
+    return 'an hour ago';
+  } else if (endDate - startDate >= 90*60* 1000 && endDate - startDate < 22*60*60*1000) {
+    var hours = Math.round((endDate - startDate)/1000/60/60);
+    console.log('hours', hours);
+    return hours + 'hours ago';
+  } else if (endDate - startDate >= 22*60*60*1000 && endDate - startDate < 36*60*60*1000) {
+    var d = 'a day ago';
+    console.log('4:', d);
+    return 'a day ago';
+  } else if (endDate - startDate >= 36*60*60*1000 && endDate - startDate < 25*24*60*60*1000) {
+    var days = Math.round((endDate - startDate)/1000/24/60/60);
+    console.log('days:', days);
+    return days + ' days ago';
+  } else if (endDate - startDate >= 25*24*60*60*1000 && endDate - startDate < 45*24*60*60*1000) {
+    var e = 'a month ago';
+    console.log('5:', e);
+    return 'a month ago';
+  } else if (endDate - startDate >= 45*24*60*60*1000 && endDate - startDate < 345*24*60*60*1000) {
+    var month = Math.round((endDate - startDate)/1000/24/60/60);
+    console.log('month:', month);
+    return month + ' months ago';
+  } else if (endDate - startDate >= 345*24*60*60*1000 && endDate - startDate <= 545*24*60*60*1000) {
+    var f = 'a year ago';
+    console.log('6:', f);
+    return 'a year ago';
+  } else if (endDate - startDate >= 546*24*60*60*1000 && endDate - startDate < 20*365*24*60*60*1000) {
+    var years = Math.round((endDate - startDate)/1000/365/24/60/60);
+    console.log('years:', years);
+    return years + ' years ago';
+  }
   /* implement your code here */
   throw new Error('Not implemented');
 }

@@ -73,8 +73,8 @@ export function getRegexForPitSpot() {
  * @return {RegExp}
  */
 export function getRegexForIPv4() {
-  /* implement your code here */
-  throw new Error('Not implemented');
+/* implement your code here */
+throw new Error('Not implemented');
 }
 
 

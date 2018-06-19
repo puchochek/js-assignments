@@ -83,7 +83,7 @@ export function  extractNameFromTemplate(value) {
  */
 export function getFirstChar(value) {
   var a = value.slice(0,1);
-    return a;
+  return a;
 }
 
 /**
@@ -98,8 +98,7 @@ export function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 export function removeLeadingAndTrailingWhitespaces(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return value.trim();
 }
 
 /**
@@ -114,8 +113,7 @@ export function removeLeadingAndTrailingWhitespaces(value) {
  *   'cat', 3 => 'catcatcat'
  */
 export function repeatString(value, count) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return value.repeat(count);
 }
 
 /**
@@ -131,8 +129,8 @@ export function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 export function removeFirstOccurrences(str, value)  {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var x = str.replace(value, '');
+  return x;
 }
 
 /**
@@ -147,8 +145,9 @@ export function removeFirstOccurrences(str, value)  {
  *   '<a>' => 'a'
  */
 export function unbracketTag(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var x = str.replace('<', '').replace('>', '');
+  return x;
+   
 }
 
 
@@ -163,8 +162,9 @@ export function unbracketTag(str) {
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
 export function convertToUpperCase(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return  str.toUpperCase();
+     
+   
 }
 
 /**
@@ -179,8 +179,9 @@ export function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 export function extractEmails(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var a = str.split(';');
+  return a;
+
 }
 
 /**
@@ -207,8 +208,16 @@ export function extractEmails(str) {
  *
  */
 export function getRectangleString(width, height) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+   
+  var z = '┌'+'─'.repeat(width-2)+'┐\n';
+  var d = '';
+  for (var a  = 0; a < height - 2; a++) {
+    d = d + ('│' + (' '.repeat(width - 2)) + '│\n');
+  }
+  var j = '└'+'─'.repeat(width-2)+'┘\n';
+  return z+d+j;
+  
+  
 }
 
 
@@ -247,9 +256,13 @@ export function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 export function isString(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
-}
+  var res = typeof value === 'string'|| value instanceof String;
+  //console.log('res', value, res);
+  return res;
+  
+  
+
+} 
 
 
 /**
